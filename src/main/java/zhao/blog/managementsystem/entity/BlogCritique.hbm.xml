@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogCritique" table="blog_critique" catalog="blog">
+        <id name="replyId" type="java.lang.Integer">
+            <column name="reply_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="blogUser" class="zhao.blog.managementsystem.entity.BlogUser" fetch="select">
+            <column name="reply_user_id" not-null="true">
+                <comment>发表评论的用户id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="blogCritique" class="zhao.blog.managementsystem.entity.BlogCritique" fetch="select">
+            <column name="reply_to_reply_id">
+                <comment>回复评论对应的id</comment>
+            </column>
+        </many-to-one>
+        <property name="replyContent" type="string">
+            <column name="reply_content" not-null="true">
+                <comment>回复内容</comment>
+            </column>
+        </property>
+        <property name="replyTypeId" type="int">
+            <column name="reply_type_id" not-null="true" default="0">
+                <comment>回复类型id:与回复类型同时作用
+                </comment>
+            </column>
+        </property>
+        <property name="replyType" type="byte">
+            <column name="reply_type" not-null="true" default="0">
+                <comment>回复所属类型0:文章 1:留言 2:相册评论??</comment>
+            </column>
+        </property>
+        <property name="replyTime" type="string">
+            <column name="reply_time" length="13" not-null="true" >
+                <comment>回复时间</comment>
+            </column>
+        </property>
+        <set name="blogCritiques" table="blog_critique" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reply_to_reply_id" not-null="true">
+                    <comment>拥有的楼中楼评论id集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogCritique" />
+        </set>
+    </class>
+</hibernate-mapping>

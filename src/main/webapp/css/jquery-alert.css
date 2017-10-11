@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+/*弹框插件样式*/			
+/* 背景 */
+.class_alert_bg{
+	font-size:16px;
+	background: #FDFDFD;
+	box-shadow:0px 1px 2px 3px #999999;
+	width: 300px;
+	padding: 0px;
+	margin: 0px;
+	color: #C9C9C9;
+	top:300px;
+	left:500px;
+	overflow-y:auto;
+	-webkit-user-select:none; 
+	-moz-user-select:none;
+	-ms-user-select:none; 
+	-o-user-select:none; 
+	user-select:none;
+}
+/* 头部 */
+.class_alert_title{
+	background: #F5F5F5;
+	text-align: left;
+	padding: 10px;
+	border-bottom: 1px solid #DDDDDD;
+	height: 40px;
+}
+/* 关闭按钮 */
+.class_alert_close{
+	cursor: pointer;
+	text-align: center;
+	position: absolute;
+	right: 10px;
+	font-size: 20px;
+	line-height: 16px;
+}
+.class_alert_close:hover{
+	color:#999999;
+}
+.class_alert_close:active{
+	color:#FFFFFF;
+}
+/* 内容 */
+.class_alert_body{
+	margin:10px;
+	min-height: 50px;
+	color:#565656;
+	-webkit-user-select:text; 
+	-moz-user-select:text;
+	-ms-user-select:text; 
+	-o-user-select:text; 
+	user-select:text;
+}
+/* 底部 */
+.class_alert_footer{
+	width: 100%;
+	padding: 10px;
+}
+/* 按钮 */
+.class_alert_submit,.class_alert_cancle{
+	padding: 5px 15px;
+	color: #FFFFFF;
+	border:1px solid #DDDDDD;
+	border-radius:3px;	
+	cursor: pointer;
+}
+/* 按钮一[确定] */
+.class_alert_submit{
+	background: #33AACC;
+	display: inline-block;
+}
+.class_alert_submit:hover{
+	background: #44BBDD;
+}
+.class_alert_submit:active{
+	background: #2299BB;
+}
+/* 按钮二 [取消]*/
+.class_alert_cancle{
+	position: absolute;
+	right: 10px;
+	background: #999999;
+	display: inline-block;
+}
+.class_alert_cancle:hover{
+	background: #AAAAAA;
+}
+.class_alert_cancle:active{
+	background: #888888;
+}

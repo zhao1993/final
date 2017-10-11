@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogSortArticle" table="blog_sort_article" catalog="blog">
+        <id name="sortArticleId" type="java.lang.Integer">
+            <column name="sort_article_id" />
+            <generator class="identity" />
+        </id>
+        <property name="sortArticleName" type="string">
+            <column name="sort_article_name" length="20" not-null="true">
+                <comment>类型名字</comment>
+            </column>
+        </property>
+        <set name="blogArticles" table="blog_article" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="article_sort_article_id" not-null="true">
+                    <comment>该分类下的文章?</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogArticle" />
+        </set>
+    </class>
+</hibernate-mapping>

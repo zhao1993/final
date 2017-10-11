@@ -1,0 +1,16 @@
+body{
+    background-color: #F5F5F5;
+}
+.admin-info{
+    width: 200px;
+    height: 120px;
+    padding-top: 15px;
+    padding-bottom: 5px
+}
+.layui-body{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+div .layui-tab .layui-tab-title li:active{
+	background: #393D49;
+}

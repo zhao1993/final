@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogArticle" table="blog_article" catalog="blog">
+        <id name="articleId" type="java.lang.Integer">
+            <column name="article_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="blogSortArticle" class="zhao.blog.managementsystem.entity.BlogSortArticle" fetch="select">
+            <column name="article_sort_article_id" not-null="true">
+                <comment>文章分类id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="blogUser" class="zhao.blog.managementsystem.entity.BlogUser" fetch="select">
+            <column name="article_user_id" not-null="true">
+                <comment>文章发表者id</comment>
+            </column>
+        </many-to-one>
+        <property name="articleTitle" type="string">
+            <column name="article_title" length="128" not-null="true">
+                <comment>文章标题</comment>
+            </column>
+        </property>
+        <property name="articleTime" type="string">
+            <column name="article_time" length="13" not-null="true">
+                <comment>文章发表时间</comment>
+            </column>
+        </property>
+        <property name="articleClick" type="int">
+            <column name="article_click" not-null="true">
+                <comment>文章点击量</comment>
+            </column>
+        </property>
+        <property name="articlePic" type="string">
+            <column name="article_pic" not-null="true">
+                <comment>文章封面路径</comment>
+            </column>
+        </property>
+        <property name="articleContent" type="string">
+            <column name="article_content" length="65535" not-null="true" sql-type="text">
+                <comment>文章内容</comment>
+            </column>
+        </property>
+        <property name="articleUp" type="byte">
+            <column name="article_up" not-null="true" default="0">
+                <comment>是否置顶0 :否 1 :是</comment>
+            </column>
+        </property>
+        <property name="articleSupport" type="byte">
+            <column name="article_support" not-null="true" default="0">
+                <comment>是否推荐0 :否 1 :是</comment>
+            </column>
+        </property>
+        <property name="articleDescript" type="string">
+            <column name="article_descript">
+                <comment>文章备注</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

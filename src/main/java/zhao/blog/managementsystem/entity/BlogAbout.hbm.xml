@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogAbout" table="blog_about" catalog="blog">
+        <id name="blogId" type="java.lang.Integer">
+            <column name="blog_id" />
+            <generator class="identity" />
+        </id>
+        <property name="blogKeyword" type="string">
+            <column name="blog_keyword" not-null="true">
+                <comment>博客关键字</comment>
+            </column>
+        </property>
+        <property name="blogDescription" type="string">
+            <column name="blog_description" not-null="true">
+                <comment>博客描述</comment>
+            </column>
+        </property>
+        <property name="blogName" type="string">
+            <column name="blog_name" length="36" not-null="true">
+                <comment>博客名字</comment>
+            </column>
+        </property>
+        <property name="blogTitle" type="string">
+            <column name="blog_title" length="128" not-null="true">
+                <comment>博客标题</comment>
+            </column>
+        </property>
+        <property name="blogAuthor" type="string">
+            <column name="blog_author" length="256" not-null="true">
+                <comment>博客作者</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

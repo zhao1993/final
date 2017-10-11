@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogDaily" table="blog_daily" catalog="blog">
+        <id name="dailyId" type="java.lang.Integer">
+            <column name="daily_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="blogUser" class="zhao.blog.managementsystem.entity.BlogUser" fetch="select">
+            <column name="daily_user_id" not-null="true">
+                <comment>发表日志的用户id</comment>
+            </column>
+        </many-to-one>
+        <property name="dailyContent" type="string">
+            <column name="daily_content" not-null="true">
+                <comment>日志内容</comment>
+            </column>
+        </property>
+        <property name="dailyTime" type="string">
+            <column name="daily_time" length="13" not-null="true">
+                <comment>日志发表时间</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

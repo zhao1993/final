@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+	<class name="zhao.blog.managementsystem.entity.BlogAlbum" table="blog_album"
+		catalog="blog">
+		<id name="albumId" type="java.lang.Integer">
+			<column name="album_id" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="blogUser"
+			class="zhao.blog.managementsystem.entity.BlogUser" fetch="select">
+			<column name="album_user_id" not-null="true">
+				<comment>相册所属用户</comment>
+			</column>
+		</many-to-one>
+		<property name="albumName" type="string">
+			<column name="album_name" length="20" not-null="true">
+				<comment>相册名</comment>
+			</column>
+		</property>
+		<property name="albumSrc" type="string">
+			<column name="album_src" not-null="true">
+				<comment>相册封面路径</comment>
+			</column>
+		</property>
+		<property name="albumTime" type="string">
+			<column name="album_time" length="13" not-null="true">
+				<comment>相册创建时间</comment>
+			</column>
+		</property>
+		<property name="albumFinalTime" type="string">
+			<column name="album_final_time" length="13" not-null="true">
+				<comment>最后修改时间</comment>
+			</column>
+		</property>
+		<set name="blogPhotos" table="blog_photo" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="photo_album_id" not-null="true">
+					<comment>相册图片id</comment>
+				</column>
+			</key>
+			<one-to-many class="zhao.blog.managementsystem.entity.BlogPhoto" />
+		</set>
+	</class>
+</hibernate-mapping>

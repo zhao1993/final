@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogPhoto" table="blog_photo" catalog="blog">
+        <id name="photoId" type="java.lang.Integer">
+            <column name="photo_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="blogAlbum" class="zhao.blog.managementsystem.entity.BlogAlbum" fetch="select">
+            <column name="photo_album_id" not-null="true">
+                <comment>所属相册的id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="blogUser" class="zhao.blog.managementsystem.entity.BlogUser" fetch="select">
+            <column name="photo_user_id" not-null="true">
+                <comment>所属用户的id</comment>
+            </column>
+        </many-to-one>
+        <property name="photoName" type="string">
+            <column name="photo_name" not-null="true">
+                <comment>相片名字</comment>
+            </column>
+        </property>
+        <property name="photoSrc" type="string">
+            <column name="photo_src" not-null="true">
+                <comment>相片路径</comment>
+            </column>
+        </property>
+        <property name="photoDescription" type="string">
+            <column name="photo_description" not-null="true">
+                <comment>相片描述</comment>
+            </column>
+        </property>
+        <property name="photoTime" type="string">
+            <column name="photo_time" length="13" not-null="true">
+                <comment>相片上传时间</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

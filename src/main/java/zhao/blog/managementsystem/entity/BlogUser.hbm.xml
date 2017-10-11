@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-5 11:47:22 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.BlogUser" table="blog_user" catalog="blog">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="user_name" length="32" not-null="true">
+                <comment>用户名</comment>
+            </column>
+        </property>
+        <property name="userAcc" type="string">
+            <column name="user_acc" length="32" not-null="true">
+                <comment>账号</comment>
+            </column>
+        </property>
+        <property name="userPwd" type="string">
+            <column name="user_pwd" length="32" not-null="true">
+                <comment>密码</comment>
+            </column>
+        </property>
+        <property name="userPhone" type="string">
+            <column name="user_phone" length="11">
+                <comment>电话</comment>
+            </column>
+        </property>
+        <property name="userSex" type="string">
+            <column name="user_sex" length="6" not-null="true">
+                <comment>性别</comment>
+            </column>
+        </property>
+        <property name="userQq" type="string">
+            <column name="user_qq" length="12">
+                <comment>QQ</comment>
+            </column>
+        </property>
+        <property name="userEmail" type="string">
+            <column name="user_email" length="64" not-null="true">
+                <comment>邮件</comment>
+            </column>
+        </property>
+        <property name="userAddress" type="string">
+            <column name="user_address" length="128" not-null="true">
+                <comment>地址</comment>
+            </column>
+        </property>
+        <property name="userBirthday" type="string">
+            <column name="user_birthday" length="13" not-null="true">
+                <comment>生日</comment>
+            </column>
+        </property>
+        <property name="userDescription" type="string">
+            <column name="user_description" not-null="true">
+                <comment>用户简介</comment>
+            </column>
+        </property>
+        <property name="userImageUrl" type="string">
+            <column name="user_image_url" not-null="true">
+                <comment>用户头像</comment>
+            </column>
+        </property>
+        <property name="userRegisterTime" type="string">
+            <column name="user_register_time" length="13" not-null="true">
+                <comment>注册时间</comment>
+            </column>
+        </property>
+        <set name="blogCritiques" table="blog_critique" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reply_user_id" not-null="true">
+                    <comment>回复记录集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogCritique" />
+        </set>
+        <set name="blogDailies" table="blog_daily" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="daily_user_id" not-null="true">
+                    <comment>拥有的日志集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogDaily" />
+        </set>
+        <set name="blogArticles" table="blog_article" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="article_user_id" not-null="true">
+                    <comment>拥有的文章集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogArticle" />
+        </set>
+        <set name="blogAlbums" table="blog_album" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_user_id" not-null="true">
+                    <comment>拥有相册集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogAlbum" />
+        </set>
+        <set name="blogPhotos" table="blog_photo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="photo_user_id" not-null="true">
+                    <comment>拥有的相片集合</comment>
+                </column>
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.BlogPhoto" />
+        </set>
+    </class>
+</hibernate-mapping>
